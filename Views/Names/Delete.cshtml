@@ -1,0 +1,16 @@
+﻿@using character.Models;
+@model Name
+@{
+    ViewBag.Title = "Delete Character";
+}
+<h2>Confirm Deletion</h2>
+<h3>@Model.Name (@Model.Year)</h3>
+    
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Name"/>
+
+    <button type="submit" class="btn btn-primary">Delete</button>
+    <a asp-controller="Home" asp-action="Index"
+    class="btn btn-primary">Cancel</a>
+
+</form>

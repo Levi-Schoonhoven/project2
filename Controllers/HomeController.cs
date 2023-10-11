@@ -1,32 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using project2.Models;
+﻿using character.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+//using MovieList.Models;'
+using Microsoft.EntityFrameworkCore;
 
-namespace project2.Controllers
+namespace chpt4x1.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private Characters context { get; set; }
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(Characters ctx)
         {
-            _logger = logger;
+            context = ctx;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var character = context.Names.Include(m => m.CharacterId).OrderBy(m => m.Name).ToList();
+            return View(character);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

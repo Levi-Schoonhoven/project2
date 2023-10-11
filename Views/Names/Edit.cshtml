@@ -1,0 +1,38 @@
+﻿@using character.Models;
+@model Name
+
+
+@{
+    string title = ViewBag.Action + "Name";
+    ViewBag.Title = title;
+
+}
+<h2>@ViewBag.Title</h2>
+
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Name">Name</label>Y
+        <input asp-for="Name" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="Year">Year</label>
+        <input asp-for="Year" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="Description">Description</label>Y
+        <input asp-for="Description" class="form-control">
+    </div>
+
+    
+
+    
+
+    <button type="submit" class="btn brn-primary">@ViewBag.Action</button>
+    <a asp-controller="Home" asp-action="Index"
+       class="btn btn-primary">Cancel</a>
+
+
+
+</form>
